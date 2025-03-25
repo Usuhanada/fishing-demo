@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>情報漏洩警告</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffcccc;
+            padding: 50px;
+        }
+        .warning {
+            color: red;
+            font-size: 24px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="warning">⚠ あなたの情報が漏洩しました ⚠</h1>
+    <p id="stolenData"></p>
+    <p>この情報は第三者に送信されました。</p>
+
+    <script>
+        let params = new URLSearchParams(window.location.search);
+        let email = params.get("email");
+        let password = params.get("password");
+
+        document.getElementById("stolenData").innerHTML = 
+            "メールアドレス: " + email + "<br>パスワード: " + password;
+    </script>
+</body>
+</html>

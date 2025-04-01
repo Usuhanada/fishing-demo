@@ -19,9 +19,13 @@
     <script src="script.js"></script>
     <script>
         function trackLogin() {
-            fetch("http://localhost:3000/track")
-                .then(response => response.json())
-                .then(data => console.log(data.message))
+            const gasUrl = "1M2ajRTVMNavj7sihtpNEGu7iSZsPMAyLsmnWJmv76aQ";
+            const ip = "不明"; // クライアント側からIP取得は難しいので省略
+            const userAgent = navigator.userAgent;
+
+            fetch(`${gasUrl}?ip=${ip}&ua=${encodeURIComponent(userAgent)}`)
+                .then(response => response.text())
+                .then(data => console.log(data))
                 .catch(error => console.error("エラー:", error));
         }
     </script>
